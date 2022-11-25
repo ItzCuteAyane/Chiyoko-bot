@@ -1,0 +1,22 @@
+{
+  "name": "chiyoko-bot",
+  "version": "1.0.0",
+  "description": "Multipurose Discord bot originally made for Chill Hub server",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "multipurpose-discord-bot"
+  ],
+  "author": "ItzCuteAyane",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@akarui/aoi.music": "^1.2.6",
+    "aoi.js": "^5.5.5",
+    "node-cron": "^3.0.2"
+  }
+}
+
