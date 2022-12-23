@@ -55,9 +55,39 @@ code: `Pong! $pingms`
 bot.command({
   name: "ban",
   code: `
-  $username[$message] has been banned from the guild.
-  $ban[$guildID;$message;0;Banned by $authorID]
+  $if[$mentioned[1]==$authorID;{execute:banUserFail};{execute:banUser}]
   $onlyPerms[ban;kick;:sob: You can't do that]
+  `
+})
+
+bot.awaitedCommand({
+  name: "banUser",
+  code: `
+  $ban[$guildID;$mentioned[1];0;Banned by $authorID]
+  $username[$mentioned[1]] was banned
+  `
+})
+
+bot.awaitedCommand({
+  name: "banUserFail",
+  code: `
+  :sob: You can't do that
+  `
+})
+
+bot.command({
+  name: "kick",
+  code: `
+  $if[$mentioned[1]==$authorID;{execute:kickUserFail};{execute:kickUser}]
+  $onlyPerms[ban;kick;:sob: You can't do that]
+  `
+})
+
+bot.awaitedCommand({
+  name: "kickUser",
+  code: `
+  $kick[$mentioned[1];$guildID;Kicked by $authorID]
+  $mentioned[1] was kicked
   `
 })
 
